@@ -1,0 +1,41 @@
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b132b;
+      font-family: 'Courier New', monospace;
+      color: #00ffcc;
+      overflow: hidden;
+    }
+
+    .briefing-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 20px;
+      gap: 40px;
+    }
+
+    .panel {
+      border: 2px solid #00ffcc;
+      padding: 20px;
+      background: #00ffcc0d;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .typing {
+      white-space: pre-wrap;
+      text-wrap: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00ffcc;  
+      animation: typing 4s steps(100, end), blink .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #00ffcc }
+    }
