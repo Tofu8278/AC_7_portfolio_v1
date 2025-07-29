@@ -8,11 +8,18 @@
       overflow: hidden;
     }
 
-    .briefing-container {
+    .container_1 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding: 20px;
+      padding: 20px 40px;
       gap: 40px;
+    }
+
+    .container_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 40px;
+    gap: 10px;
     }
 
     .panel {
@@ -39,3 +46,22 @@
       from, to { border-color: transparent }
       50% { border-color: #00ffcc }
     }
+
+    .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #00ff00;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    transition: transform 0.05s ease;
+  }
+
+  .diamond {
+    transform: rotate(45deg);
+    border-radius: 0;
+  }
