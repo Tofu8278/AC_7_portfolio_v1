@@ -1,35 +1,57 @@
-
-    body {
+    /*header or nav bar area*/
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: #0b132b;
+      color: #00ffcc;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-bottom: 2px solid #00ffcc;
+      z-index: 1;
+    }
+    
+    
+    /*main area start*/
+    body{
       margin: 0;
       padding: 0;
       background: #0b132b;
       font-family: 'Courier New', monospace;
       color: #00ffcc;
-      overflow: hidden;
     }
-
-    .container_1 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 20px 40px;
-      gap: 40px;
+    .main-wrapper{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      padding: 40px;
     }
-
-    .container_2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 20px 40px;
-    gap: 10px;
+    .main-panel{
+      width: 40%;
     }
-
-    .panel {
-      border: 2px solid #00ffcc;
+    .side-panel{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 30%;
+      border: 1px solid red;
+    }
+    .side-box{
+      width: 100%;
       padding: 20px;
-      background: #00ffcc0d;
+      background: rgba(0, 255, 204, 0.05);
       box-shadow: 0 0 10px #00ffcc;
+      border-left: 3px solid #00ffcc;
+      color: #00ffcc;
+      transition: all 0.3s ease;
     }
-
-    .typing {
+    .side-box:hover {
+      background: rgba(0, 255, 204, 0.1);
+      color: #ff3333;
+      animation: terminalFlash 0.4s steps(2, jump-none) infinite;
+      box-shadow: 0 0 20px red;
+    }
+    .typing{
       white-space: pre-wrap;
       text-wrap: nowrap;
       overflow: hidden;
@@ -37,17 +59,20 @@
       animation: typing 4s steps(100, end), blink .75s step-end infinite;
     }
 
-    @keyframes typing {
+
+    /*small animated section for the typing animation*/
+    @keyframes typing{
       from { width: 0 }
       to { width: 100% }
     }
-
-    @keyframes blink {
+    @keyframes blink{
       from, to { border-color: transparent }
       50% { border-color: #00ffcc }
     }
 
-    .custom-cursor {
+
+    /*cursor sector*/
+    .custom-cursor{
     position: fixed;
     top: 0;
     left: 0;
@@ -60,8 +85,147 @@
     mix-blend-mode: screen;
     transition: transform 0.05s ease;
   }
-
-  .diamond {
+  .center-reticle {
+    width: 30px;
+    height: 30px;
+    border: 2px dashed #00ff00;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    animation: rotateReticle 5s linear infinite;
+    pointer-events: none;
+    z-index: 9998;
+  }
+  .diamond{
     transform: rotate(45deg);
     border-radius: 0;
   }
+
+  @keyframes terminalFlash {
+    0%, 100% {
+      background-color: rgba(255, 0, 0, 0.05);
+    }
+    50% {
+      background-color: rgba(255, 0, 0, 0.15);
+    }
+  }
+  @keyframes rotateReticle {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* When hovering around  the side panel area,
+  the cursor can speed up and change color */
+  .side-box:hover .center-reticle {
+    animation: rotateReticleFast 1s linear infinite;
+    border-color: red;
+  }
+  @keyframes rotateReticleFast {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+
+  /*HUD effects*/
+
+  /*an HUD refers to : "heads up display" and are used in many games 
+  for the users to see certain statistics of their character*/
+
+  .hud-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .hud-box{
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    position: absolute;
+    padding: 10px;
+    border: 1px solid #00ff00;
+    background: rgba(0, 255, 0, 0.05);
+    text-align: center;
+  }
+  .top-left{
+    top: 20px;
+    left: 20px;
+  }
+  .bottom-right{
+    bottom: 20px;
+    right: 20px;
+  }
+  /*minimap stuff*/
+  .bottom-left{
+  bottom: 20px;
+  left: 20px;
+  }
+  .minimap canvas{
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  }
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+.main-wrapper {
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.main-panel,.side-panel {
+  width: 90%;
+}
+.hud-box {
+  font-size: 12px;
+  padding: 6px;
+}
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+}
+.center-reticle {
+  width: 40px;
+  height: 40px;
+}
+.typing {
+  font-size: 14px;
+}
+}
+
+/*disabling custom cursor on mobile view*/
+@media (hover: none){
+  .custom-cursor{
+    display: none;
+  }
+}
+
+/*side menu button*/
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 2px solid #00ffcc;
+  color: #00ffcc;
+  padding: 10px;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+  z-index: 10000;
+  border: 1px solid red;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .side-panel {
+    display: none;
+    width: 100%;
+  }
+  .side-panel.active {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -4,49 +4,41 @@
   <meta charset="UTF-8">
   <title>Mission Briefing</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="Javascript" href="script.js">
 </head>
 <body>
-  <div class="custom-cursor diamond"></div>
 
-  <div class="briefing_1">
-    <div class="panel">
+  <!--cosmetic stuff-->
+  <div class="hud-overlay">
+    <div class="hud-box center-reticle"></div>
+    <div class="hud-box bottom-left minimap">
+    <canvas id="minimap" width="100" height="100"></canvas>
+    </div>
+  </div>
+  <div class="custom-cursor diamond"></div>
+  <!--main content-->
+  <div class="main-wrapper">
+    <div class="main-panel panel">
       <div class="typing">
         WELCOME TO MY PORTFOLIO  ฅ^•ﻌ•^ฅ
         This page is inspired by a game named :
         [Ace Combat 7 : Skies Unknown]
-        
+
         The maker of this website is [redacted]
       </div>
     </div>
+  <!--button for menu on mobile view-->
+  <button id="menuToggle" class="menu-toggle">☰ MENU</button>
+
+    <div class="side-panel">
+      <div class="side-box panel"><div>Homepage</div></div>
+      <div class="side-box panel"><div>Skills</div></div>
+      <div class="side-box panel"><div>Projects</div></div>
+      <div class="side-box panel"><div>Contact Me</div></div>
+    </div>
+  </div>
   
-  </div>
-    <div class="briefing_2">
-    <div class="panel">
-      <div class="typing">
-        box bar 1
-      </div>
-    </div>
-  </div>
 
-  </div>
-    <div class="briefing_2">
-    <div class="panel">
-      <div class="typing">
-        box bar 1
-      </div>
-    </div>
-  </div>
-
-  </div>
-    <div class="briefing_2">
-    <div class="panel">
-      <div class="typing">
-        box bar 1
-      </div>
-    </div>
-  </div>
-
+<script src="script.js"></script>
 
 </body>
 </html>
