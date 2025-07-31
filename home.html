@@ -1,65 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Mission Briefing</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <!--navigation bar-->
-  <header class="sticky-header">
-    <button id="menuToggle" class="menu-toggle">☰ MENU</button>
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+  <header class="sticky-header" role="banner">
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰ MENU</button>
+    <nav class="nav-links" role="navigation" aria-label="Main navigation">
+      <a href="#home" tabindex="0">Home</a>
+      <a href="#skills" tabindex="0">Skills</a>
+      <a href="#projects" tabindex="0">Projects</a>
+      <a href="#contact" tabindex="0">Contact</a>
     </nav>
   </header>
 
-  <!-- HUD overlay -->
-  <div class="hud-overlay">
-    <div class="hud-box center-reticle"></div>
-    <div class="hud-box bottom-left minimap">
-      <img src="images/tofu.jpeg" alt="profile image" class="profile-retro">
-    </div>
-  </div>
-  <div class="custom-cursor diamond"></div>
 
-  <!-- Main content wrapper -->
-  <div class="main-wrapper">
-    <div class="main-panel panel" id="home">
-      <div class="typing">
-        WELCOME TO MY PORTFOLIO  ฅ^•ﻌ•^ฅ
-        This page is inspired by:
-        [Ace Combat 7: Skies Unknown]
-
-        The maker of this website is [redacted]
+  <main class="main">
+    <!--main section-->
+    <section id="home" class="slide-in" tabindex="0" aria-label="Home section">
+      <div class="section-content">
+        <div class="typing-text" id="typing"></div>
+        <!--so for some reason when one tries to add text ,
+        it overlaps with the javascript, so i removed the text here-->
       </div>
-    </div>
-
-    <div class="side-panel">
-      <div class="side-boxes">
-        <div class="side-box panel"><a href="#home">Homepage</a></div>
-        <div class="side-box panel"><a href="#skills">Skills</a></div>
+      <div class="section-image">
+        <img src="images/tofu.jpeg" alt="Ace Combat 7 game background" />
       </div>
-      <div class="side-boxes">
-        <div class="side-box panel"><a href="#projects">Projects</a></div>
-        <div class="side-box panel"><a href="#contact">Contact Me</a></div>
+    </section>
+
+    <!--Skills section-->
+    <section id="skills" class="slide-in" tabindex="0" aria-label="Skills section">
+      <div class="section-content">
+        <h2>My Skills</h2>
+        <div class="skills-grid" aria-label="List of skills">
+          <div class="skill-card" tabindex="0" role="listitem" aria-label="HTML skill">HTML</div>
+          <div class="skill-card" tabindex="0" role="listitem" aria-label="JavaScript skill">JavaScript</div>
+          <div class="skill-card" tabindex="0" role="listitem" aria-label="Python skill">Python</div>
+          <div class="skill-card" tabindex="0" role="listitem" aria-label="Java skill">Java</div>
+        </div>
       </div>
-    </div>
-  </div>
+      <div class="section-image slideshow">
+        <img src="images/html5.png" alt="Coding skills illustration" />
+      </div>
+    </section>
 
-  <!--back to top button-->
-  <button id="backToTop" class="back-to-top">↑</button>
-
-  <!-- Footer -->
-  <footer class="footer" id="contact">
-    <p>Contact: <a href="mailto:23103104@imail.sunway.edu.my">23103104@imail.sunway.edu.my</a> |
-       Github: <a href="https://github.com/Tofu8278" target="_blank">Tofu8278</a></p>
-  </footer>
-
+    <!--Projects section-->
+    <section id="projects" class="slide-in" tabindex="0" aria-label="Projects section">
+      <div class="section-content">
+        <h2>Projects</h2>
+        <div class="project-list">
+          <div class="project-link" tabindex="0">
+            <a href="https://github.com/Tofu8278/tester">
+              <h2>Group project on GitHub</h2></a>
+            </div>
+            <div class="project-link" tabindex="0">
+              <a href="https://github.com/Tofu8278/AC_7_portfolio_v1">
+                <h2>Personal Portfolio on GitHub</h2></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <!--footer area-->
+      <footer class="footer" id="contact" role="contentinfo">
+        Contact: <a href="mailto:23103104@imail.sunway.edu.my">23103104@imail.sunway.edu.my</a> |
+        Github: <a href="https://github.com/Tofu8278">Tofu8278</a>
+      </footer>
+      <!--something new learnt : the mailto: tag directly opens up any (lets the user choose)
+      application within the user's machine for the user to send email to the person-->
+      
+      <!--custom cursor sector-->
+      <div class="center-reticle"></div>
+      <div class="custom-cursor diamond"></div>
+      
   <script src="script.js"></script>
 </body>
 </html>
+
+<!--additional notes / ideas that was scrapped-->
+
+<!-- the <pre></pre> tag ensures that the text remains exactly 
+ how i want it to be (although it was scrapped because one decided to chagne it to div)
+  at the empty main section-->
+
+
