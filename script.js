@@ -6,8 +6,8 @@ document.addEventListener('mousemove', (e) => {
   const x = e.clientX;
   const y = e.clientY;
 
-  cursor.style.left = `${x - 15}px`;
-  cursor.style.top = `${y - 15}px`;
+  cursor.style.left = `${x - 17}px`;
+  cursor.style.top = `${y - 17}px`;
 
   reticle.style.left = `${x}px`;
   reticle.style.top = `${y}px`;
@@ -34,4 +34,9 @@ const sidePanel = document.querySelector('.side-panel');
 
 menuToggle.addEventListener('click', () => {
   sidePanel.classList.toggle('active');
+});
+
+//animation for side panels
+window.addEventListener('load', () => {
+  document.querySelector('.side-panel').classList.add('animate-in');
 });

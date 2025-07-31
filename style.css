@@ -34,6 +34,9 @@
       flex-direction: column;
       gap: 20px;
       width: 30%;
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 0.8s ease;
       border: 1px solid red;
     }
     .side-box{
@@ -51,20 +54,22 @@
       animation: terminalFlash 0.4s steps(2, jump-none) infinite;
       box-shadow: 0 0 20px red;
     }
-    .typing{
-      white-space: pre-wrap;
-      text-wrap: nowrap;
+    .typing {
+      white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid #00ffcc;  
-      animation: typing 4s steps(100, end), blink .75s step-end infinite;
+      border-right: 2px solid #00ffcc;
+      width: fit-content;
+      max-width: 100%;
+      animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
     }
-
-
+    
+    
     /*small animated section for the typing animation*/
-    @keyframes typing{
-      from { width: 0 }
-      to { width: 100% }
+      @keyframes typing {
+      from { width: 0ch }
+      to { width: 50ch }
     }
+
     @keyframes blink{
       from, to { border-color: transparent }
       50% { border-color: #00ffcc }
@@ -94,7 +99,6 @@
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
-    animation: rotateReticle 5s linear infinite;
     pointer-events: none;
     z-index: 9998;
   }
@@ -110,10 +114,6 @@
     50% {
       background-color: rgba(255, 0, 0, 0.15);
     }
-  }
-  @keyframes rotateReticle {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
   /* When hovering around  the side panel area,
@@ -163,9 +163,20 @@
   bottom: 20px;
   left: 20px;
   }
-  .minimap canvas{
+  .minimap img{
   background: rgba(0, 255, 0, 0.1);
   border: 1px solid #00ff00;
+  width: 100px;
+  height: 100px;
+  }
+
+  .footer{
+    text-align: center;
+    padding: 20px;
+    color: #00ffcc;
+    font-size: 14px;
+    border-top: 2px solid #00ffcc;
+    background: #0b132b;
   }
 
 
@@ -173,26 +184,19 @@
 @media (max-width: 768px) {
 .main-wrapper {
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   padding: 20px;
 }
 .main-panel,.side-panel {
-  width: 90%;
+  width: 100%;
 }
-.hud-box {
-  font-size: 12px;
-  padding: 6px;
-}
-.custom-cursor {
-  width: 20px;
-  height: 20px;
-}
-.center-reticle {
-  width: 40px;
-  height: 40px;
+.side-box {
+  font-size: 14px;
+  padding: 10px;
 }
 .typing {
   font-size: 14px;
+  width: auto;
 }
 }
 
@@ -205,6 +209,9 @@
 
 /*side menu button*/
 .menu-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
   display: none;
   background: none;
   border: 2px solid #00ffcc;
