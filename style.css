@@ -1,238 +1,213 @@
-    /*header or nav bar area*/
-    .sticky-header {
-      position: sticky;
-      top: 0;
-      background: #0b132b;
-      color: #00ffcc;
-      font-weight: bold;
-      font-size: 16px;
-      padding: 10px 20px;
-      border-bottom: 2px solid #00ffcc;
-      z-index: 1;
-    }
-    
-    
-    /*main area start*/
-    body{
-      margin: 0;
-      padding: 0;
-      background: #0b132b;
-      font-family: 'Courier New', monospace;
-      color: #00ffcc;
-    }
-    .main-wrapper{
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      padding: 40px;
-    }
-    .main-panel{
-      width: 40%;
-    }
-    .side-panel{
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 30%;
-      opacity: 0;
-      transform: translateX(-100px);
-      transition: all 0.8s ease;
-      border: 1px solid red;
-    }
-    .side-box{
-      width: 100%;
-      padding: 20px;
-      background: rgba(0, 255, 204, 0.05);
-      box-shadow: 0 0 10px #00ffcc;
-      border-left: 3px solid #00ffcc;
-      color: #00ffcc;
-      transition: all 0.3s ease;
-    }
-    .side-box:hover {
-      background: rgba(0, 255, 204, 0.1);
-      color: #ff3333;
-      animation: terminalFlash 0.4s steps(2, jump-none) infinite;
-      box-shadow: 0 0 20px red;
-    }
-    .typing {
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #00ffcc;
-      width: fit-content;
-      max-width: 100%;
-      animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
-    }
-    
-    
-    /*small animated section for the typing animation*/
-      @keyframes typing {
-      from { width: 0ch }
-      to { width: 50ch }
-    }
-
-    @keyframes blink{
-      from, to { border-color: transparent }
-      50% { border-color: #00ffcc }
-    }
-
-
-    /*cursor sector*/
-    .custom-cursor{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #00ff00;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: screen;
-    transition: transform 0.05s ease;
-  }
-  .center-reticle {
-    width: 30px;
-    height: 30px;
-    border: 2px dashed #00ff00;
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9998;
-  }
-  .diamond{
-    transform: rotate(45deg);
-    border-radius: 0;
-  }
-
-  @keyframes terminalFlash {
-    0%, 100% {
-      background-color: rgba(255, 0, 0, 0.05);
-    }
-    50% {
-      background-color: rgba(255, 0, 0, 0.15);
-    }
-  }
-
-  /* When hovering around  the side panel area,
-  the cursor can speed up and change color */
-  .side-box:hover .center-reticle {
-    animation: rotateReticleFast 1s linear infinite;
-    border-color: red;
-  }
-  @keyframes rotateReticleFast {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-
-
-  /*HUD effects*/
-
-  /*an HUD refers to : "heads up display" and are used in many games 
-  for the users to see certain statistics of their character*/
-
-  .hud-overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  .hud-box{
-    color: #00ff00;
-    font-family: 'Courier New', monospace;
-    position: absolute;
-    padding: 10px;
-    border: 1px solid #00ff00;
-    background: rgba(0, 255, 0, 0.05);
-    text-align: center;
-  }
-  .top-left{
-    top: 20px;
-    left: 20px;
-  }
-  .bottom-right{
-    bottom: 20px;
-    right: 20px;
-  }
-  /*minimap stuff*/
-  .bottom-left{
-  bottom: 20px;
-  left: 20px;
-  }
-  .minimap img{
-  background: rgba(0, 255, 0, 0.1);
-  border: 1px solid #00ff00;
-  width: 100px;
-  height: 100px;
-  }
-
-  .footer{
-    text-align: center;
-    padding: 20px;
-    color: #00ffcc;
-    font-size: 14px;
-    border-top: 2px solid #00ffcc;
-    background: #0b132b;
-  }
-
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-.main-wrapper {
-  flex-direction: column;
-  align-items: stretch;
-  padding: 20px;
-}
-.main-panel,.side-panel {
-  width: 100%;
-}
-.side-box {
-  font-size: 14px;
-  padding: 10px;
-}
-.typing {
-  font-size: 14px;
-  width: auto;
-}
+body {
+  background: url("images/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Courier New', monospace;
+  color: #00ffcc;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-/*disabling custom cursor on mobile view*/
-@media (hover: none){
-  .custom-cursor{
-    display: none;
-  }
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: #0b132b;
+  color: #00ffcc;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+.nav-links a {
+  margin: 0 10px;
+  color: #00ffcc;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-links a:hover {
+  color: red;
 }
 
-/*side menu button*/
 .menu-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
   display: none;
   background: none;
   border: 2px solid #00ffcc;
   color: #00ffcc;
   padding: 10px;
   font-size: 18px;
-  margin: 10px;
   cursor: pointer;
-  z-index: 10000;
-  border: 1px solid red;
 }
+
+.main-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 40px;
+  position: relative;
+}
+
+.main-panel {
+  width: 45%;
+}
+
+.typing {
+  font-size: 16px;
+  white-space: normal;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 45%;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.8s ease;
+}
+
+.side-panel.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.side-boxes {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.side-box {
+  flex: 1;
+  padding: 20px;
+  background: rgba(0, 255, 204, 0.05);
+  box-shadow: 0 0 10px #00ffcc;
+  border-left: 3px solid #00ffcc;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.side-box:hover {
+  background: rgba(255, 0, 0, 0.05);
+  box-shadow: 0 0 20px red;
+}
+.side-box a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #00ffcc;
+  background: #0b132b;
+  border-top: 2px solid #00ffcc;
+}
+
+/* Reticle and Cursor */
+.custom-cursor, .center-reticle {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+}
+.custom-cursor {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00ff00;
+  mix-blend-mode: screen;
+}
+.center-reticle {
+  width: 30px;
+  height: 30px;
+  border: 2px dashed #00ff00;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.diamond {
+  transform: rotate(45deg);
+  border-radius: 0;
+}
+
+/* Hover animations */
+/* When hovering around  the side panel area,
+the cursor can speed up and change color */
+.side-box:hover .center-reticle {
+  animation: rotateReticleFast 1s linear infinite;
+  border-color: red;
+}
+@keyframes rotateReticleFast {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* HUD Overlay */
+/*an HUD is in short stands for  : "heads up display" and are used in many games 
+for the users to see certain statistics of their character*/
+
+.hud-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.hud-box {
+  position: absolute;
+  padding: 10px;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  background: rgba(0, 255, 0, 0.05);
+}
+.bottom-left {
+  top: 20px;
+  right: 20px;
+}
+.minimap img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #00ff00;
+  background: rgba(0, 255, 0, 0.1);
+  filter: contrast(1.2) saturate(1.3) grayscale(0.1);
+}
+
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 15px;
+  background-color: rgba(0, 255, 204, 0.1);
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  border-radius: 5px;
+  display: none;
+  cursor: pointer;
+  z-index: 999;
+}
+.back-to-top:hover {
+  background-color: rgba(0, 255, 204, 0.3);
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
+  .main-wrapper {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .main-panel, .side-panel {
+    width: 100%;
+  }
+  .side-boxes {
+    flex-direction: column;
+  }
   .menu-toggle {
     display: block;
   }
-  .side-panel {
+  .nav-links {
     display: none;
-    width: 100%;
   }
-  .side-panel.active {
-    display: flex;
-    flex-direction: column;
+}
+@media (hover: none) {
+  .custom-cursor {
+    display: none;
   }
 }
